@@ -4,8 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="./css/styles.css">
+  <script src="script.js" defer></script>
   <title>Frontend Mentor | Social Media Dashboard</title>
 </head>
 
@@ -17,13 +19,224 @@
     </div>
 
     <div class="header__right">
-      <span class="header__span">Dark Mode</span>
+      <span class="header__span" id="mode-text">Dark Mode</span>
       <input id="checkbox" type="checkbox" class="header__right__checkbox">
-      <label for="checkbox" class="header__right__label">
+      <label for="checkbox" class="header__right__label" id="checkbox-label">
         <div class="header__right__label__ball"></div>
       </label>
     </div>
   </header>
+
+  <main>
+    <section class="cards">
+      <h2>Overall Statistics</h2>
+
+      <div class="cards__grid">
+        <div class="cards__card cards__card--facebook">
+          <div class="cards__card__username">
+            <img src="./images/icon-facebook.svg" alt="facebook logo" />
+            <p>@nullchar</p>
+          </div>
+
+          <p class="cards__card__stat">
+            1987 <span>Followers</span>
+          </p>
+
+          <div class="diff diff--up">
+            <img src="images/icon-up.svg" alt="stats up" />
+            <p>12 Today</p>
+          </div>
+        </div>
+
+        <div class="cards__card cards__card--twitter">
+          <div class="cards__card__username">
+            <img src="./images/icon-twitter.svg" alt="twitter logo" />
+            <p>@nullchar</p>
+          </div>
+
+          <p class="cards__card__stat">
+            1044 <span>Followers</span>
+          </p>
+
+          <div class="diff diff--up">
+            <img src="images/icon-up.svg" alt="stats up" />
+            <p>99 Today</p>
+          </div>
+        </div>
+
+        <!-- Wrapper for the instagram card's gradient border -->
+        <div class="instagram-gradient-wrapper">
+          <div class="cards__card cards__card--instagram">
+            <div class="cards__card__username">
+              <img src="./images/icon-instagram.svg" alt="instagram logo" />
+              <p>@nullchar</p>
+            </div>
+
+            <p class="cards__card__stat">
+              11k <span>Followers</span>
+            </p>
+
+            <div class="diff diff--up">
+              <img src="images/icon-up.svg" alt="stats up" />
+              <p>1099 Today</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards__card cards__card--youtube">
+          <div class="cards__card__username">
+            <img src="./images/icon-youtube.svg" alt="youtube logo" />
+            <p>Null Char</p>
+          </div>
+
+          <p class="cards__card__stat">
+            8239 <span>Subscribers</span>
+          </p>
+
+          <div class="diff diff--down">
+            <img src="images/icon-down.svg" alt="stats down" />
+            <p>144 Today</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="overview-cards">
+      <h2>Overview - Today</h2>
+
+      <div class="overview-cards__grid">
+
+        <!-- FACEBOOK -->
+
+        <div class="overview-cards__card">
+          <div class="overview-cards__card__left">
+            <h3>Page Views</h3>
+            <p>87</p>
+          </div>
+
+          <div class="overview-cards__card__right">
+            <img src="images/icon-facebook.svg" alt="facebook logo" />
+            <div class="diff diff--up">
+              <img src="images/icon-up.svg" alt="stats up" alt="" />
+              <p>3%</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="overview-cards__card">
+          <div class="overview-cards__card__left">
+            <h3>Likes</h3>
+            <p>52</p>
+          </div>
+
+          <div class="overview-cards__card__right">
+            <img src="images/icon-facebook.svg" alt="facebook logo" />
+            <div class="diff diff--down">
+              <img src="images/icon-down.svg" alt="stats down" alt="" />
+              <p>2%</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- INSTAGRAM -->
+
+        <div class="overview-cards__card">
+          <div class="overview-cards__card__left">
+            <h3>Likes</h3>
+            <p>5462</p>
+          </div>
+
+          <div class="overview-cards__card__right">
+            <img src="images/icon-instagram.svg" alt="instagram logo" />
+            <div class="diff diff--up">
+              <img src="images/icon-up.svg" alt="stats up" alt="" />
+              <p>2257%</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="overview-cards__card">
+          <div class="overview-cards__card__left">
+            <h3>Profile Views</h3>
+            <p>52k</p>
+          </div>
+
+          <div class="overview-cards__card__right">
+            <img src="images/icon-instagram.svg" alt="instagram logo" />
+            <div class="diff diff--up">
+              <img src="images/icon-up.svg" alt="stats up" alt="" />
+              <p>1375%</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TWITTER -->
+
+        <div class="overview-cards__card">
+          <div class="overview-cards__card__left">
+            <h3>Retweets</h3>
+            <p>117</p>
+          </div>
+
+          <div class="overview-cards__card__right">
+            <img src="images/icon-twitter.svg" alt="twitter logo" />
+            <div class="diff diff--up">
+              <img src="images/icon-up.svg" alt="stats up" alt="" />
+              <p>303%</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="overview-cards__card">
+          <div class="overview-cards__card__left">
+            <h3>Likes</h3>
+            <p>507</p>
+          </div>
+
+          <div class="overview-cards__card__right">
+            <img src="images/icon-twitter.svg" alt="twitter logo" />
+            <div class="diff diff--up">
+              <img src="images/icon-up.svg" alt="stats up" alt="" />
+              <p>553%</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- YOUTUBE -->
+
+        <div class="overview-cards__card">
+          <div class="overview-cards__card__left">
+            <h3>Likes</h3>
+            <p>107</p>
+          </div>
+
+          <div class="overview-cards__card__right">
+            <img src="images/icon-youtube.svg" alt="youtube logo" />
+            <div class="diff diff--down">
+              <img src="images/icon-down.svg" alt="stats down" alt="" />
+              <p>19%</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="overview-cards__card">
+          <div class="overview-cards__card__left">
+            <h3>Total Views</h3>
+            <p>1407</p>
+          </div>
+
+          <div class="overview-cards__card__right">
+            <img src="images/icon-youtube.svg" alt="youtube logo" />
+            <div class="diff diff--down">
+              <img src="images/icon-down.svg" alt="stats down" alt="" />
+              <p>12%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- Social Media Dashboard
   Total Followers: 23,004
