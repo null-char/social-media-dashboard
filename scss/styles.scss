@@ -19,7 +19,62 @@ body {
 }
 
 body {
-  padding: 2rem 15rem;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+
+  h1 {
+    font-size: 2.8rem;
+    padding-bottom: 0.3rem;
+  }
+
+  &__span {
+    color: $text-desaturated-blue;
+    font-size: 1.4rem;
+  }
+
+  &__left {
+    padding-bottom: 2rem;
+  }
+
+  &__right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__checkbox {
+      position: absolute;
+      opacity: 0;
+    }
+
+    &__label {
+      cursor: pointer;
+      height: 2.3rem;
+      width: 5rem;
+      border-radius: 5rem;
+      background-image: $toggle-dark-gradient;
+      padding: 0.3rem;
+      display: flex;
+      align-items: center;
+
+      &__ball {
+        height: 95%;
+        width: 40%;
+        background-color: $background-dark-color;
+        border-radius: 50%;
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+
+    &__checkbox:checked+&__label &__label__ball {
+      transform: translateX(2.5rem);
+    }
+  }
 }
 
 .attribution {
