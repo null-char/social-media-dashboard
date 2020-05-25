@@ -1,4 +1,5 @@
 @import './utils';
+@import './media';
 
 *,
 *::after,
@@ -6,20 +7,97 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
 body {
   font-size: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   background-color: $background-dark-color;
-  color: $text-color;
+  color: $text-dark-color;
+
+  @include lg {
+    font-size: 11px;
+  }
+
+  @include xl {
+    font-size: 12px;
+  }
+
+  @include xxl {
+    font-size: 14px;
+  }
 }
 
 body {
   padding: 2rem;
+  transition: all 0.2s ease-in-out;
+
+  @include lg {
+    padding: 2rem 5rem;
+  }
+
+  @include xl {
+    padding: 2rem 8rem;
+  }
+
+  &.light {
+    background-color: $background-light-color;
+    color: $text-light-color;
+
+    .header {
+      &__span {
+        color: $text-grayish-blue;
+      }
+
+      &__right__label {
+        background-image: none;
+        background-color: $text-grayish-blue;
+
+        &__ball {
+          background-color: $background-light-color;
+        }
+      }
+    }
+
+    main span {
+      color: $text-grayish-blue;
+    }
+
+    @mixin card-light-styles {
+      background-color: $card-bg-light-color;
+      box-shadow: 0rem 0.3rem 0.6rem rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        box-shadow: 0rem 0.6rem 0.8rem rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    .cards__card {
+      @include card-light-styles;
+
+      &__username {
+        color: $text-grayish-blue;
+      }
+
+      &__stat span {
+        color: $text-grayish-blue;
+      }
+    }
+
+    .overview-cards__card {
+      @include card-light-styles;
+
+      h3 {
+        color: $text-grayish-blue;
+      }
+    }
+  }
 }
 
 .header {
@@ -29,7 +107,7 @@ body {
   width: 100%;
 
   h1 {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
     padding-bottom: 0.3rem;
   }
 
@@ -74,6 +152,215 @@ body {
     &__checkbox:checked+&__label &__label__ball {
       transform: translateX(2.5rem);
     }
+  }
+}
+
+main {
+  padding-top: 3rem;
+
+  section h2 {
+    font-size: 2.3rem;
+  }
+}
+
+.cards {
+  // properties of each card
+  $border-size: 0.5rem;
+  $border-radius: 1rem;
+  $gutter-gap: 2rem;
+
+  h2 {
+    margin-bottom: $gutter-gap;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-rows: repeat(1fr, 4);
+    grid-template-columns: 1fr;
+    row-gap: $gutter-gap;
+    width: 100%;
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+      column-gap: $gutter-gap;
+    }
+
+    @include lg {
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+
+  .instagram-gradient-wrapper {
+    padding-top: $border-size;
+    background-image: $instagram-gradient;
+    border-radius: $border-radius;
+    transition: transform 0.2s ease-in-out;
+    // kind of a hacky fix
+    height: 25rem - $border-size;
+    margin-bottom: $border-size;
+
+    &:hover {
+      transform: translateY(-0.2rem);
+    }
+  }
+
+  &__card {
+    cursor: pointer;
+    width: 100%;
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: $card-bg-dark-color;
+    border-radius: $border-radius;
+    border-top: $border-size solid transparent;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-0.2rem);
+    }
+
+    &--facebook {
+      border-color: $facebook-blue;
+    }
+
+    &--twitter {
+      border-color: $twitter-blue;
+    }
+
+    &--instagram:hover {
+      transform: none;
+    }
+
+    &--youtube {
+      border-color: $youtube-red;
+    }
+
+    &__username {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: $text-desaturated-blue;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      // logo svg
+      img {
+        padding-right: 0.7rem;
+      }
+    }
+
+    &__stat {
+      font-size: 5rem;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      & span {
+        font-size: 1.3rem;
+        font-weight: 400;
+        color: $text-desaturated-blue;
+        text-transform: uppercase;
+        letter-spacing: 0.8rem;
+      }
+    }
+  }
+
+}
+
+.overview-cards {
+  $gutter-gap: 2rem;
+  margin-top: 3rem;
+
+  h2 {
+    margin-bottom: $gutter-gap;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-rows: repeat(1fr, 8);
+    row-gap: $gutter-gap;
+    column-gap: $gutter-gap;
+    width: 100%;
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include lg {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+
+  &__card {
+    cursor: pointer;
+    width: 100%;
+    height: 13rem;
+    border-radius: 1rem;
+    transition: all 0.2s ease-in-out;
+    background-color: $card-bg-dark-color;
+    display: flex;
+    justify-content: space-between;
+    padding: 0rem 2rem;
+    align-items: center;
+
+    &:hover {
+      transform: translateY(-0.2rem);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: $text-desaturated-blue;
+      font-weight: 700;
+    }
+
+    &__left,
+    &__right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 70%;
+    }
+
+    &__left {
+      align-items: flex-start;
+
+      p {
+        font-size: 4rem;
+        font-weight: 700;
+        // for fixing a weird alignment issue
+        line-height: 3.5rem;
+      }
+    }
+
+    &__right {
+      align-items: flex-end;
+    }
+  }
+}
+
+// class applied to stat diffs (eg: <up-icon> 12 Today)
+.diff {
+  font-size: 1.3rem;
+  color: $text-dark-color;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+
+  // the up / down svg
+  img {
+    padding-right: 0.5rem;
+  }
+
+  &--up {
+    color: $lime-green;
+  }
+
+  &--down {
+    color: $bright-red;
   }
 }
 
